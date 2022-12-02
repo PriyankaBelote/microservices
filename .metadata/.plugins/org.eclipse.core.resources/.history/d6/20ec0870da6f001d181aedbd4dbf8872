@@ -1,0 +1,5 @@
+package com.techno.userservice.service;
+
+public interface UserService {
+
+}

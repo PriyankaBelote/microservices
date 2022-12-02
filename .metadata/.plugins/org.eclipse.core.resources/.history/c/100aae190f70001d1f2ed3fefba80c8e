@@ -1,0 +1,21 @@
+package com.techno.userservice.service;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.techno.userservice.dto.UserDto;
+import com.techno.userservice.model.User;
+
+@Service
+public interface UserService {
+
+	UserDto getRegistered(UserDto userDto);
+
+	UserDto getById(Integer userId);
+
+	List<User> getAll();
+
+	User deleteById(Integer userId);
+
+}

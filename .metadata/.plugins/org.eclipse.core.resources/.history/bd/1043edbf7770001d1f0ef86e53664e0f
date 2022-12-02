@@ -1,0 +1,18 @@
+package com.techno.FeignClientDemo.util;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.techno.FeignClientDemo.dto.ResponseDto;
+import com.techno.FeignClientDemo.dto.UserDto;
+
+
+@FeignClient(value="feignDemo",url="http://localhost:8090/user")
+public interface FeignServiceUtil {
+
+	@PostMapping("/register")
+	ResponseEntity<ResponseDto> register(@RequestBody UserDto userDto);
+		
+}

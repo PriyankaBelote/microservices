@@ -1,0 +1,5 @@
+package com.techno.FeignClientDemo.dto;
+
+public class ResponseDto {
+
+}

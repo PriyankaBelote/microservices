@@ -1,0 +1,14 @@
+package com.techno.userservice.service;
+
+import org.springframework.stereotype.Service;
+
+import com.techno.userservice.dto.UserDto;
+
+@Service
+public interface UserService {
+
+	UserDto getRegistered(UserDto userDto);
+
+	UserDto getById(Integer id);
+
+}

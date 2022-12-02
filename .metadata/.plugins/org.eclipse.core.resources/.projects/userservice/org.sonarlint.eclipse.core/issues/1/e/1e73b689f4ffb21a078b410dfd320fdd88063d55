@@ -1,0 +1,7 @@
+
+[
+java:S1481'")Remove this unused "user" local variable.(Ç­‚û8´¥²¢Ì0HLRMINORZ
+CODE_SMELL
+j
+java:S1854'"8Remove this useless assignment to local variable "user".(Ç­‚û8´¥²¢Ì0HKRMAJORZ
+CODE_SMELL

@@ -1,0 +1,27 @@
+server:
+  port: 8000
+  
+eureka:  
+   instance:
+      hostname: localhost  
+  
+spring:
+  application:
+    name: api-gateway
+    
+  cloud:
+    gateway:
+      routes:
+      - id: user-service
+        uri: lb://user-service
+        predicates:
+          - Path=/user/**
+         
+      - id: employee-service
+        uri: lb://employee-service
+        predicates:
+          - Path=/demo/**
+         
+    
+ 
+    

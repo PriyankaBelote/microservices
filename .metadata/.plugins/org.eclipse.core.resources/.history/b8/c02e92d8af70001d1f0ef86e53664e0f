@@ -1,0 +1,53 @@
+package com.techno.FeignClientDemo.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.techno.FeignClientDemo.dto.ResponseDto;
+import com.techno.FeignClientDemo.dto.UserDto;
+import com.techno.FeignClientDemo.util.FeignServiceUtil;
+
+@RestController
+@RequestMapping("/demo")
+public class FeignDemoController {
+
+	@Autowired
+	private FeignServiceUtil feignServiceUtil;
+	
+	
+	@PostMapping("/add")
+	public ResponseEntity<ResponseDto> add(@RequestBody UserDto userDto) {
+		return feignServiceUtil.register(userDto);
+
+	}
+	
+	@GetMapping("/getAll")
+	public ResponseEntity<ResponseDto> getAllData(){
+		return feignServiceUtil.getAll();
+		
+		
+	}
+	
+	@GetMapping("/getById/{userId}")
+	public ResponseEntity<ResponseDto> getAllById(@PathVariable Integer userId) {
+		return feignServiceUtil.getById(userId);
+	}
+	
+	
+	@DeleteMapping("/deleteById/{userId}")
+	public ResponseEntity<ResponseDto> deleteById(@PathVariable Integer userId) {
+		try {
+			return feignServiceUtil.deleteById(userId);
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+}
+

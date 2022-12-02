@@ -1,0 +1,5 @@
+package com.techno.FeignClientDemo.controller;
+
+public class FeignDemoController {
+
+}

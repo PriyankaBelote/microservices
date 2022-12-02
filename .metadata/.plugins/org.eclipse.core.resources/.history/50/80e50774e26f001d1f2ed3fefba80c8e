@@ -1,0 +1,37 @@
+package com.techno.userservice.service;
+
+import java.util.Optional;
+
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.techno.userservice.dto.UserDto;
+import com.techno.userservice.model.User;
+import com.techno.userservice.repository.UserRepository;
+
+public class UserServiceImpl implements UserService{
+
+	@Autowired
+	private UserRepository userRepository;
+
+	@Override
+	public UserDto getRegistered(UserDto userDto) {
+		User user=new User();
+		BeanUtils.copyProperties(userDto,user);
+		userRepository.save(user);
+		BeanUtils.copyProperties(user,userDto);
+		return userDto;
+	}
+
+	@Override
+	public UserDto getById(Integer id) {
+		try {
+			Optional<User> user = userRepository.findById(id);
+			return new UserDto(user.get());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+}
